@@ -1,3 +1,32 @@
 #movie_moun{
-  width: 200px;
+  width: 300px;
+  
+} 
+#asd{
+  text-align: center;
+}
+#home{
+  text-align: center;
+}
+#home_id{
+  text-decoration-line: none;
+}
+#introduce{
+  text-align: center;
+  
+}
+#intro_intro{
+  margin-right: 40px;
+  text-decoration-line: none;
+
+}
+#intro_person{
+  text-decoration-line: none;
+}
+#intro_story{
+  margin-left: 40px;
+  text-decoration-line: none;
+}
+#intro_output{
+  text-align: center;
 }
