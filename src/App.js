@@ -4,18 +4,18 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Kmovie from "./Routes/kmovie";
-import Link from "./Routes/link";
+import Link from './Routes/link'
+import Kmovie from './Routes/kmovie'
 
-function App(){
-  return(
-      <BrowserRouter>
-        <Routes>
-          <Route path='/kmovie' element={<Kmovie/>}/>
-          <Route path='/kmoviea' element={<Link/>}/>
-        </Routes>
-      </BrowserRouter>
-  )
+const App = () => {
+ return (
+ <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Link/>}/>
+      <Route path="/hook" element={<Kmovie/>}/>
+    </Routes>
+  </BrowserRouter>
+)
 }
 
 export default App;

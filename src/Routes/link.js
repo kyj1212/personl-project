@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './link.css';
 import {useEffect, useState,useRef} from 'react';
 
@@ -7,6 +6,7 @@ function Movie(){
   const [subtitle,setSubtitle] = useState("링크를 클릭")
   const [command,setComand] = useState("")
   const [attend,setAttend] = useState([])
+  const pagemove = ['/','/hook']
   
   
   function introduce(event){
@@ -33,7 +33,10 @@ function Movie(){
       return [command, ...attend] // comand가 인자로 안들어갔는데 comand가 나오는게 궁금
     })
   }
-  
+  function select(event){
+    window.location.href = event.target.value
+  }
+
   return(
     <div>
       <div id='asd'>
@@ -57,9 +60,11 @@ function Movie(){
         <button>댓글추가</button>
       </form>
       <h3>{attend}</h3>
-      <select>
-        <option value="kmovie.js">zzzzzzzzz</option>
-        <option>tttt</option>
+      <select onChange={select}>
+        {pagemove.map((item) => (
+            <option value={item}>하이</option>
+        ))
+        }
       </select>
 
     </div>
@@ -67,7 +72,6 @@ function Movie(){
 }
 
 function Link(){
-  
   return(
     <div>
       <Movie></Movie>
