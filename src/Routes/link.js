@@ -36,6 +36,7 @@ function Movie(){
   function select(event){
     window.location.href = event.target.value
   }
+  
 
   return(
     <div>
@@ -63,7 +64,8 @@ function Movie(){
       <select onChange={select}>
         {pagemove.map((item) => (
             <option value={item}>하이</option>
-        ))
+
+        )) //질문 링크 걸기
         }
       </select>
 
