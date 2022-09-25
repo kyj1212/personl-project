@@ -1,5 +1,7 @@
 import './link.css';
-import {useEffect, useState,useRef} from 'react';
+import {useEffect, useState, useRef} from 'react';
+import { useNavigate } from "react-router-dom"
+import Axios from "../axios"
 
 function Movie(){
   const [subject,setSubject] = useState("보고싶은사람")
@@ -7,20 +9,18 @@ function Movie(){
   const [command,setComand] = useState("")
   const [attend,setAttend] = useState([])
   const pagemove = ['/','/hook']
+  const navigate = useNavigate()
   
   
   function introduce(event){
-    event.preventDefault()
     setSubject("이 영화는 상당히 재밌습니다")
     setSubtitle("다른 소개를 보고싶으면 링크 클릭")
   }
   function person(event){
-    event.preventDefault()
     setSubject("하정우,마동석")
     setSubtitle("다른 소개를 보고싶으면 링크 클릭")
   }
   function story(event){
-    event.preventDefault()
     setSubject("줄거리는 없습니다 ")
     setSubtitle("다른 소개를 보고싶으면 링크 클릭")
   }
@@ -34,7 +34,7 @@ function Movie(){
     })
   }
   function select(event){
-    window.location.href = event.target.value
+    navigate("/hook")
   }
   
 

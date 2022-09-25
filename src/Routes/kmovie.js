@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom"
 
 function Kmovie(){
     const element = useRef();
+    const navigate = useNavigate()
     function fullbutton(event){
         if(element.current){
             element.current.requestFullscreen()
@@ -9,7 +11,7 @@ function Kmovie(){
     }
 
     function back(evnet){
-        window.location.href = '/'
+        navigate("/")
     }
 
     return(

@@ -13,9 +13,9 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Link/>}/>
       <Route path="/hook" element={<Kmovie/>}/>
-    </Routes>
+   </Routes> <from></from>
   </BrowserRouter>
 )
 }
 
-export default App;
+export default App; 
