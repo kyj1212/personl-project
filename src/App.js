@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Link from './Routes/link'
 import Kmovie from './Routes/kmovie'
+import Membership from './Routes/membership'
 
 const App = () => {
  return (
@@ -13,7 +14,8 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Link/>}/>
       <Route path="/hook" element={<Kmovie/>}/>
-   </Routes> <from></from>
+      <Route path="/gomembership" element={<Membership/>}/>
+   </Routes> 
   </BrowserRouter>
 )
 }

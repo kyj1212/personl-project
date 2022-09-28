@@ -1,7 +1,11 @@
-#movie_moun{
-    width: 300px;
+  #movie_moun{
+      width: 300px;
     
-  } 
+    } 
+  .membership{
+    text-align: left;
+    margin-left: 20px;
+  }
   #asd{
     text-align: center;
   }

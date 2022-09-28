@@ -36,11 +36,15 @@ function Movie(){
   function select(event){
     navigate("/hook")
   }
+  function membership(event){
+    navigate("/gomembership")
+  }
   
 
   return(
     <div>
       <div id='asd'>
+        <p class='membership' onClick={membership}>멤버쉽 가입하기</p>
         <img id='movie_moun' src='mountain.jpg'></img>
       </div>
         <div id='home'><h2><a href='/home' id='home_id'>홈으로</a></h2></div>
@@ -77,6 +81,7 @@ function Link(){
   return(
     <div>
       <Movie></Movie>
+      <Axios></Axios>
     </div>
   )
 }
