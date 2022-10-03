@@ -18,7 +18,16 @@ import axios from 'axios'
             }).catch(function (error) {
                 console.log(error);
             });
-            console.log(a)
+
+            axios.get("http://58.229.6.137:3200/user",{
+            headers : {
+                "Authorization" : "Bearer" + a 
+            }
+            })
+            .then((res)=>
+            console.log(res.data))
+            .catch((error)=>
+        console.log(error))
         }
 
 
