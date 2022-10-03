@@ -23,9 +23,12 @@ function Enroll(){
         ).then(function a(response) { 
             console.log(response)
         })
-            .catch(function (error) {
-                console.log(error);
-            });
+        .catch(function (error) {
+            console.log(error);
+        });
+
+   
+
         }
 
     return(
@@ -42,7 +45,7 @@ function Enroll(){
             <p>
                 <input onChange={(event)=>{setName(event.target.value)}} value={name} placeholder='name'></input>
             </p>
-            <button onClick={send}>보내기</button>                        
+            <button onClick={send}>회원가입하기</button>                        
         </div>
     )
 }

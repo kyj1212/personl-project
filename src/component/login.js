@@ -2,32 +2,36 @@ import React, {useEffect,useState} from "react";
 import axios from 'axios'
 
 
-    function Login(){
+    function Login({name}){
     
-
         const [email_login,setEmail_login] = useState("")
         const [password_login,setPassword_login] = useState("")
+        const [report,setReport] = useState("")
+        const [content,setContent] = useState("")
     
-        function loginsend(event){
-           const a = axios.post("http://58.229.6.137:3200/auth/signin",
+         async function loginsend(event){
+           const token = await axios.post("http://58.229.6.137:3200/auth/signin",
             {
                 "email": email_login,
                 "password": password_login 
             }).then(function (res) { 
-                return res.data.token
+                return res.data.token 
             }).catch(function (error) {
                 console.log(error);
             });
 
             axios.get("http://58.229.6.137:3200/user",{
             headers : {
-                "Authorization" : "Bearer" + a 
+                "Authorization" : "Bearer " + token
             }
             })
             .then((res)=>
             console.log(res.data))
             .catch((error)=>
         console.log(error))
+        
+            {name(token)}
+    
         }
 
 
@@ -43,7 +47,10 @@ import axios from 'axios'
                 <p>
                     <input onChange={(event)=>{setPassword_login(event.target.value)}} value={password_login} placeholder='password'></input>
                 </p>
-                <button onClick={loginsend}>보내기</button>
+                <button onClick={loginsend}>로그인하기</button>
+                
+                
+                
             </div>
     
         )
