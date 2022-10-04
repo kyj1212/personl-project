@@ -9,9 +9,8 @@ import Read from './component/read'
 function Axios(){
     const [hello,setHello] = useState()
     return(
-        <div>
-            <Enroll></Enroll>
-            <Login name={setHello}></Login>
+        <div>         
+            <Login name={setHello} token={hello}></Login>
             <Read type={hello}></Read>           
         </div>       
     )

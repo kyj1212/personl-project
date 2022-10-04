@@ -1,7 +1,8 @@
 import {useEffect, useState, useRef} from 'react';
 import { useNavigate } from "react-router-dom"
+ 
 
-function Movie(){
+function Movie({name}){
     const [subject,setSubject] = useState("보고싶은사람")
     const [subtitle,setSubtitle] = useState("링크를 클릭")
     const [command,setComand] = useState("")
@@ -10,6 +11,7 @@ function Movie(){
     const navigate = useNavigate()
     
     
+  
     function introduce(event){
       setSubject("이 영화는 상당히 재밌습니다")
       setSubtitle("다른 소개를 보고싶으면 링크 클릭")
@@ -38,12 +40,15 @@ function Movie(){
       navigate("/gomembership")
     }
     
-  
+    
     return(
       <div>
         <div id='asd'>
-          <p class='membership' onClick={membership}>멤버쉽 가입하기</p>
-          <img id='movie_moun' src='mountain.jpg'></img>
+          <p class='membership' onClick={membership}>
+            멤버쉽 가입하기
+          </p>
+          
+         <img id='movie_moun' src='mountain.jpg'></img>
         </div>
           <div id='home'><h2><a href='/home' id='home_id'>홈으로</a></h2></div>
           <div id='introduce'>
@@ -69,8 +74,8 @@ function Movie(){
   
           )) //질문 링크 걸기
           }
-        </select>
-  
+        </select> 
+          
       </div>
     )
   }
