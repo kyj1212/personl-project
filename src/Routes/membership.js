@@ -9,7 +9,7 @@ function Enroll(){
     const [name,setName] = useState("")
     const member = useNavigate()
     
-    function send(event){
+    function memship_send(event){
          axios.post("http://58.229.6.137:3200/auth/signup",
         {
             "email": email,
@@ -50,7 +50,7 @@ function Enroll(){
             <p>
                 <input onChange={(event)=>{setName(event.target.value)}} value={name} placeholder='name'></input>
             </p>
-            <button onClick={send}>회원가입하기</button>                        
+            <button onClick={memship_send}>회원가입하기</button>                        
         </div>
     )
 }

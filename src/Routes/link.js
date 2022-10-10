@@ -12,8 +12,7 @@ function Link(){
     setLove(love+1)
   }
   return(
-    <div>
-      <Movie></Movie>
+    <div>  
       <Axios></Axios>
       <p>
         <span>이 영화를 추천합니다 <span onClick={good}>👍{love}</span> </span>

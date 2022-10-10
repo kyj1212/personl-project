@@ -2,15 +2,16 @@ import {useEffect, useState, useRef} from 'react';
 import { useNavigate } from "react-router-dom"
  
 
-function Movie({name}){
+function Movie({name,moviestatus}){
     const [subject,setSubject] = useState("보고싶은사람")
     const [subtitle,setSubtitle] = useState("링크를 클릭")
     const [command,setComand] = useState("")
     const [attend,setAttend] = useState([])
     const pagemove = ['/','/hook']
     const navigate = useNavigate()
-    
-    
+    const [convertlogout,setConvertlogout] = useState("로그인하기")
+
+   
   
     function introduce(event){
       setSubject("이 영화는 상당히 재밌습니다")
@@ -29,9 +30,7 @@ function Movie({name}){
     }
     function onSubmit(event){
       event.preventDefault(attend,command)
-      setAttend(function(){
-        return [command, ...attend] // comand가 인자로 안들어갔는데 comand가 나오는게 궁금
-      })
+      setAttend( [command, ...attend])  
     }
     function select(event){
       navigate("/hook")
@@ -39,15 +38,23 @@ function Movie({name}){
     function membership(event){
       navigate("/gomembership")
     }
+
+   
+    console.log(moviestatus)
+    if(moviestatus === '201'){
+      setConvertlogout("로그아웃하기")
+    }else{
+      console.log('실패')
+    }
     
-    
+   
     return(
       <div>
         <div id='asd'>
-          <p class='membership' onClick={membership}>
-            멤버쉽 가입하기
+          <p  onClick={membership}>
+           <span class='membership'>멤버쉽 가입하기</span> 
           </p>
-          
+          <button>{convertlogout}</button>
          <img id='movie_moun' src='mountain.jpg'></img>
         </div>
           <div id='home'><h2><a href='/home' id='home_id'>홈으로</a></h2></div>
@@ -60,6 +67,11 @@ function Movie({name}){
           <h1>{subject}</h1>
           <h2>{subtitle}</h2>
         </div>
+        {attend.map(k=>(
+            <li>
+              {k}
+            </li>
+        ))}
         
         <h3>리뷰달기</h3>
         <form onSubmit={onSubmit}>
@@ -67,15 +79,14 @@ function Movie({name}){
           </input>
           <button>댓글추가</button>
         </form>
-        <h3>{attend}</h3>
-        <select onChange={select}>
+         <select onChange={select}>
           {pagemove.map((item) => (
               <option value={item}>하이</option>
   
           )) //질문 링크 걸기
           }
         </select> 
-          
+       
       </div>
     )
   }
