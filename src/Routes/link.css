@@ -10,6 +10,15 @@
   #asd{
     text-align: center;
   }
+  #login{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #loginmargin{
+    margin-right: 10px;
+  }
+
   #home{
     text-align: center;
   }

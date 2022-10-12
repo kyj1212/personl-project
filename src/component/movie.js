@@ -5,13 +5,28 @@ import { useNavigate } from "react-router-dom"
 function Movie({name,moviestatus}){
     const [subject,setSubject] = useState("보고싶은사람")
     const [subtitle,setSubtitle] = useState("링크를 클릭")
-    const [command,setComand] = useState("")
+    const [command,setComand] = useState("") //댓글구현
     const [attend,setAttend] = useState([])
     const pagemove = ['/','/hook']
     const navigate = useNavigate()
     const [convertlogout,setConvertlogout] = useState("로그인하기")
+    const nameinput = useRef()
 
-   
+    function changeCommend(event){
+      for(let i=0; i<attend.length; i++){
+        if(event.target.value===attend[i]){
+          setComand(attend.splice(i,1,"hello"))
+        }
+
+      }
+    }
+    function removecommand(event){
+      for(let k=0; k<attend.length; k++){
+        if(event.target.value===attend[k]){
+          setComand(attend.splice(k,1))
+        }
+      }
+    }
   
     function introduce(event){
       setSubject("이 영화는 상당히 재밌습니다")
@@ -31,7 +46,7 @@ function Movie({name,moviestatus}){
     function onSubmit(event){
       event.preventDefault(attend,command)
       setAttend( [command, ...attend])  
-    }
+    } //댓글구현
     function select(event){
       navigate("/hook")
     }
@@ -39,22 +54,33 @@ function Movie({name,moviestatus}){
       navigate("/gomembership")
     }
 
-   
-    console.log(moviestatus)
-    if(moviestatus === '201'){
-      setConvertlogout("로그아웃하기")
-    }else{
-      console.log('실패')
-    }
+    useEffect(()=>{
+      if(moviestatus === 201){
+        setConvertlogout("로그아웃하기")
+      }else{
+        console.log('실패')
+      }
+    },[moviestatus]
+    )
     
+    function backlogin(){
+      setConvertlogout("로그인하기")
+    }
+    function testbutton(event){
+      setComand(attend.splice(2,1,"hello"))
+    }
+      
+  
    
     return(
       <div>
         <div id='asd'>
-          <p  onClick={membership}>
+          <p id='login' onClick={membership}>
            <span class='membership'>멤버쉽 가입하기</span> 
+            <button id='loginmargin' onClick={backlogin}>{convertlogout}</button>
           </p>
-          <button>{convertlogout}</button>
+          
+       
          <img id='movie_moun' src='mountain.jpg'></img>
         </div>
           <div id='home'><h2><a href='/home' id='home_id'>홈으로</a></h2></div>
@@ -67,26 +93,32 @@ function Movie({name,moviestatus}){
           <h1>{subject}</h1>
           <h2>{subtitle}</h2>
         </div>
-        {attend.map(k=>(
+
+        {attend.map((k,m)=>(
             <li>
               {k}
+              <button value={k} onClick={changeCommend}>수정</button>
+              <button value={k} onClick={removecommand}>삭제</button>
             </li>
-        ))}
+          ))}
+        
         
         <h3>리뷰달기</h3>
+
         <form onSubmit={onSubmit}>
-          <input value={command} type='text' placeholder='clean봇이 감지중입니다' onChange={onChange}>
+          <input ref={nameinput} value={command} type='text' placeholder='clean봇이 감지중입니다' onChange={onChange}>
           </input>
           <button>댓글추가</button>
         </form>
+
          <select onChange={select}>
           {pagemove.map((item) => (
               <option value={item}>하이</option>
   
-          )) //질문 링크 걸기
+          )) 
           }
         </select> 
-       
+       <button onClick={testbutton}>실험용버튼</button>
       </div>
     )
   }

@@ -8,12 +8,10 @@ import axios from 'axios'
         const [password_login,setPassword_login] = useState("")
         const [report,setReport] = useState("")
         const [content,setContent] = useState("")
-        const [convertlogout,setConvertlogout] = useState("로그인하기")
+    
         
         
-        function changelogin(){
-            setConvertlogout("로그인하기")
-        }
+       
 
          async function loginsend(event){
            const token = await axios.post("http://58.229.6.137:3200/auth/signin",
@@ -61,7 +59,7 @@ import axios from 'axios'
                     <input onChange={(event)=>{setPassword_login(event.target.value)}} value={password_login} placeholder='password'></input>
                 </p>
                 <button onClick={loginsend}>로그인하기</button>
-                <button onClick={changelogin}>{convertlogout}</button>
+               
                 
                 
                 

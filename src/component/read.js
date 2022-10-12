@@ -1,13 +1,13 @@
 import React, {useEffect,useState} from "react";
 import axios from 'axios'
 
-function Read({type}){
+function Read({type,readOfSend}){
  
     const [report,setReport] = useState("")
     const [content,setContent] = useState("")
     
     function reportsend(event){
-        
+       
         axios.post("http://58.229.6.137:3200/record",
         {
            "content": report,
